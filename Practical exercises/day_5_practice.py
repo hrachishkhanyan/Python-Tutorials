@@ -41,3 +41,10 @@ Where the fear has gone there will be nothing. Only I will remain."""
 
 # 7. Write a program that will print a list containing first 50 numbers in Fibonacci sequence.
 
+# 8. Write a program to combine two dictionary adding values for common keys.
+
+# 9. Write a program to create a dictionary from a string. The letters are the keys and the values are the counts of
+# the corresponding letters.
+
+# 10. Remove the keys that have None value from the dict.
+colors = {'Color 1': 'Red', 'Color 2': 'Blue', 'Color 3': 'Green', 'Color 4': None, 'Color 5': 'Yellow', 'Color 6': None}
