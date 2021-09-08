@@ -3,6 +3,8 @@
 # 1. Write a program to loop through a range from 0 to 100 and print the even numbers only.
 # Գրել ցիկլ, որը կտպի 0-100 զույգ թվերը։
 
+
+
 # 2. Write a program to loop through a range from 350 to 677 and print only numbers ending with 7.
 # Գրել ցիկլ, որը կտպի 350-677 միջակայքի միայն այն թվերը, որոնք ավարտվում են 7-ով։
 
@@ -32,3 +34,15 @@
 # Խաղն ավելի հետաքրքիր դարձնելու համար կարելի է սահմանափակել հնարավորությունների քանակը։ Կարելի է նաև խաղացողին
 # տեղեկացնել, արդյո՞ք նրա մուտքագրած թիվը մեծ է պահված թվից, թե փոքր։
 
+"""Bonus"""
+
+# 8. Given a string, print a string where for every character in the original, there are two characters.
+# Տրված է սթրինգ։ Տպեք նոր սթրինգ, որը կպարունակի օրիգինալ սթրինգի բոլոր տառերը կրկնապատկված։
+
+# Օրինակ, եթե ունենք հետևյալ սթրինգը՝ Monty, պետք է ստանանք MMoonnttyy
+
+# 9. Given 2 strings, a and b, return the number of the positions where they contain the same length 2 substring. So
+# "xxcaazz" and "xxbaaz" yields 3, since the "xx", "aa", and "az" substrings appear in the same place in both strings.
+
+# 10. Reverse a string without the use of indexation (e.g. [::-1]).
+# Շրջել սթրինգը առանց գործածելու str[::-1]
