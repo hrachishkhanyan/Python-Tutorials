@@ -24,3 +24,5 @@
 
 # 8. Write a function that sorts a list in ascending. Additionally, the function may take a keyword argument that will
 # reverse the sort.
+
+# 9. Create 3 numerical lists. Using the map function, return a new list, which is the element-wise sum of the 3 lists.

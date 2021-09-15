@@ -1,4 +1,4 @@
-# DECORATORS AND CLOSURES
+"""DECORATORS AND CLOSURES"""
 
 # 1. Using closures, create a counter.
 
@@ -7,7 +7,7 @@
 
 # 3. Write a function timer decorator.
 
-# 4. Time recursive functions from the last topic
+"""INTRODUCTION TO PYTHON GUI WITH TKINTER"""
 
-# 5. Write a Python program to make a chain of function decorators (bold, italic, underline etc.).
+# 1. Let's make a calculator!
 

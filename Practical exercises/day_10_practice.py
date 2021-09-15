@@ -15,7 +15,6 @@
 # 6. Write a recursive function that will list every file in the given path. If there are folders, list the contents of
 # these folders as well. Pay attention to the output formatting. It must be clear which is a folder and which is a file.
 
-# 7. Create a file and put your shopping list in it. The file must start with current day's date.
 
 
 
