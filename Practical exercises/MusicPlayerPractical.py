@@ -1,8 +1,9 @@
 import tkinter
 import os
 import random
+from tkinter import ttk
 import vlc  # pygame
-from mutagen.mp3 import MP3
+# from mutagen.mp3 import MP3
 
 
 class Player:
@@ -10,6 +11,7 @@ class Player:
         self.playlist: Playlist = playlist
         self.is_playing = False
         self.now_playing_song = ''
+        self.media_player = vlc.MediaPlayer()
         # self.now_playing_index = 0
 
     def __str__(self):
@@ -22,11 +24,16 @@ class Player:
 
         if not self.is_playing:
             # self.now_playing_index = play_index
+            media = vlc.Media('./Music/Faun - Von Den Elben.mp3')
+
+            self.media_player.set_media(media)
+            self.media_player.play()
+
             self.is_playing = True
-            self.now_playing_song = self.playlist.song_list[play_index]
-            print('=' * 50)
-            print(f'Now playing:\n{self.now_playing_song}')
-            print('=' * 50)
+            # self.now_playing_song = self.playlist.song_list[play_index]
+            # print('=' * 50)
+            # print(f'Now playing:\n{self.now_playing_song}')
+            # print('=' * 50)
         else:
             print('The player is already active')
 
@@ -35,6 +42,7 @@ class Player:
             print('The player is not active')
         else:
             self.is_playing = False
+            self.media_player.set_pause(1)
             print('The player has been stopped')
 
     def show_current_song_info(self):
@@ -116,15 +124,65 @@ class Song:
         return f'Artist: {self.artist}\nAlbum: {self.album}\nYear: {self.year}\nSong name: {self.name}'
 
 
-playlist = Playlist()
+if __name__ == '__main__':
+    # Setting up some constants
+    BUTTON_HEIGHT = 1
+    BUTTON_WIDTH = 11
 
-playlist.load_songs('./albums.txt')
-playlist.add_song('Sting', 'The Last Ship', 2013, 'The Last Ship')
+    playlist = Playlist()
+    player = Player(playlist)
 
-player = Player(playlist)
+    # Setting up the main window
+    main_window = tkinter.Tk()
+    main_window.title('Music Player')
+    main_window.geometry('346x240')
+    main_window.iconbitmap('./Practical exercises/play.ico')
+    main_window.resizable(width=False, height=False)
+    # Setting up the label
+    status = tkinter.StringVar(value='Nothing plays')
+    label = tkinter.Label(main_window, textvar=status)
+    label.grid(column=0, row=0, columnspan=4, sticky='ew')
 
-player.play()
-player.shuffle()
-player.next_song()
-player.prev_song()
-player.next_song()
+    # Creating the seeker
+    seeker = ttk.Scale(main_window)
+    seeker.grid(column=0, row=1, columnspan=4, sticky='ew')
+
+    # Setting up the buttons
+    play_button = tkinter.Button(main_window, text='Play', height=BUTTON_HEIGHT, width=BUTTON_WIDTH,
+                                 command=player.play)
+    play_button.grid(column=0, row=2, sticky='ew')
+
+    pause_button = tkinter.Button(main_window, text='Pause', height=BUTTON_HEIGHT, width=BUTTON_WIDTH,
+                                  command=player.stop)
+    pause_button.grid(column=1, row=2, sticky='ew')
+
+    next_button = tkinter.Button(main_window, text='Next song', height=BUTTON_HEIGHT, width=BUTTON_WIDTH)
+    next_button.grid(column=2, row=2, sticky='ew')
+
+    prev_button = tkinter.Button(main_window, text='Previous song', height=BUTTON_HEIGHT, width=BUTTON_WIDTH)
+    prev_button.grid(column=3, row=2, sticky='ew')
+
+    # Setting up the listbox with its scrollbar
+    listbox = tkinter.Listbox(main_window)
+    listbox.grid(column=0, row=3, columnspan=4, sticky='ew')
+
+    scrollbar = tkinter.Scrollbar(main_window)
+    scrollbar.grid(column=3, row=3, sticky='esn')
+
+    listbox.config(yscrollcommand=scrollbar.set)
+    scrollbar.config(command=listbox.yview)
+
+    # with open('./Homeworks/random_words.txt') as words:
+    #     for index, word in enumerate(words.readlines()):
+    #         listbox.insert(index, word)
+
+    # media_player = vlc.MediaPlayer()
+    # media = vlc.Media('Music/Faun - Von Den Elben.mp3')
+    #
+    # media_player.set_media(media)
+    # media_player.play()
+
+    main_window.mainloop()
+
+
+# pip install --upgrade pip
